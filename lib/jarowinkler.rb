@@ -1,7 +1,9 @@
 module JaroWinkler
   
-  class JaroWinklerDistance
-    def matches( s1, s2 )
+  class JaroWinkler
+    THRESHOLD = 0.7
+
+    def getDistance( s1, s2 )
       a1 = s1.split( // )
       a2 = s2.split( // )
       
@@ -72,8 +74,7 @@ module JaroWinkler
         m = matches.to_f
         t = (transpositions/ 2)
         j = ((m / s1.size) + (m / s2.size) + ((m - t) / m)) / 3.0;
-        jw = j < 0.7 ? j : j + [0.1, 1.0 / max.size].min * prefix * (1 - j)
-        jw
+        return j < THRESHOLD ? j : j + [0.1, 1.0 / max.size].min * prefix * (1 - j)
       end
     end
   end
