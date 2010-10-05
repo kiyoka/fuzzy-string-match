@@ -11,17 +11,9 @@ module JaroWinkler
         (max,min) = a2,a1
       end
 
-      print "max " ; p max
-      print "min " ; p min
       range = [ (max.size / 2 - 1), 0 ].max
-
-      print "range " ; p range
-
       indexes = Array.new( min.size, -1 )
       flags   = Array.new( max.size, false )
-
-      print "indexes " ; p indexes
-      print "flags "   ; p flags
 
       matches = 0;
       (0 ... min.size).each { |mi|
@@ -38,8 +30,6 @@ module JaroWinkler
           end
         }
       }
-
-      print "matches " ; p matches
 
       ms1 = Array.new( matches, nil )
       ms2 = Array.new( matches, nil )
@@ -76,18 +66,13 @@ module JaroWinkler
         end
       }
 
-      print "transpositions " ; p transpositions
-      print "prefix         " ; p prefix
       if 0 == matches
         0.0
       else
         m = matches.to_f
         t = (transpositions/ 2)
-        print "t " ; p t
         j = ((m / s1.size) + (m / s2.size) + ((m - t) / m)) / 3.0;
-        print "j " ; p j
         jw = j < 0.7 ? j : j + [0.1, 1.0 / max.size].min * prefix * (1 - j)
-        print "jw " ; p jw
         jw
       end
     end
