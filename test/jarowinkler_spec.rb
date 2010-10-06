@@ -22,6 +22,7 @@
 #
 #  
 require 'jarowinkler'
+require 'amatch'
 
 describe JaroWinkler, "when some string distances are" do
   before do
@@ -43,6 +44,33 @@ describe JaroWinkler, "when some string distances are" do
     lambda {
       d1 = @jarow.getDistance("brittney spears", "britney spears")
       d2 = @jarow.getDistance("brittney spears", "brittney startzman")
+      d1 > d2
+    }.should be_true
+  end
+end
+
+def amatch_getDistance( s1, s2 )
+  @jarow = Amatch::JaroWinkler.new( s1 )
+  @jarow.match( s2 )
+end
+
+describe Amatch, "when use Amatch gem, results are" do
+  it "should" do
+    amatch_getDistance( "al",        "al"        ).should == 1.0
+    amatch_getDistance( "martha",    "marhta"    ).should be_close( 0.9611, 0.0001 )
+    amatch_getDistance( "jones",     "johnson"   ).should be_close( 0.8323, 0.0001 )
+    amatch_getDistance( "abcvwxyz",  "cabvwxyz"  ).should be_close( 0.9583, 0.0001 )
+    amatch_getDistance( "dwayne",    "duane"     ).should be_close( 0.8400, 0.0001 )
+    amatch_getDistance( "dixon",     "dicksonx"  ).should be_close( 0.8133, 0.0001 )
+    amatch_getDistance( "fvie",      "ten"       ).should == 0.0
+    lambda {
+      d1 = amatch_getDistance("zac ephron", "zac efron")
+      d2 = amatch_getDistance("zac ephron", "kai ephron")
+      d1 > d2
+    }.should be_true
+    lambda {
+      d1 = amatch_getDistance("brittney spears", "britney spears")
+      d2 = amatch_getDistance("brittney spears", "brittney startzman")
       d1 > d2
     }.should be_true
   end
