@@ -1,7 +1,7 @@
 module JaroWinkler
   
   class JaroWinkler
-    def create( type = :pure )
+    def create( type = :pure )     # factory method
       case type
       when :pure
         JaroWinklerPure.new
