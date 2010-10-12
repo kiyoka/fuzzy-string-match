@@ -28,7 +28,7 @@ rescue LoadError
 end
 
 task :check do
-  sh "ruby -I ./lib /usr/local/bin/spec -b ./test/jarowinkler_spec.rb"
+  sh "ruby -I ./lib /usr/local/bin/spec -b ./test/fuzzystringmatch_spec.rb"
 end
 
 task :bench do
