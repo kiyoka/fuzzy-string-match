@@ -4,7 +4,7 @@
 #
 require 'benchmark'
 require 'amatch'
-require '../lib/jarowinkler'
+require './lib/jarowinkler'
 
 looptimes = 10000
 
@@ -27,10 +27,20 @@ puts Benchmark.measure {
   }
 }
 
-puts "[ThisModule]"
+puts "[this Module (pure)]"
 puts Benchmark::CAPTION
 puts Benchmark.measure {
-  jarow = JaroWinkler::JaroWinkler.new
+  jarow = JaroWinkler::JaroWinkler.new.create
+  looptimes.times { |n|
+    names.map { |x|
+      jarow.getDistance( keyword, x )
+    }
+  }
+}
+puts "[this Module (native)]"
+puts Benchmark::CAPTION
+puts Benchmark.measure {
+  jarow = JaroWinkler::JaroWinkler.new.create( :native )
   looptimes.times { |n|
     names.map { |x|
       jarow.getDistance( keyword, x )
