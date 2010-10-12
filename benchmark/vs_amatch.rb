@@ -4,17 +4,22 @@
 #
 require 'benchmark'
 require 'amatch'
-require './lib/jarowinkler'
+require './lib/fuzzystringmatch'
 
 looptimes = 10000
 
-names = [ "Aichi",     "Akita",    "Aomori", "Chiba",    "Ehime",    "Fukui",     "Fukuoka",  "Fukushima", "Gifu",     "Gunma",
-          "Hiroshima", "Hokkaido", "Hyogo",  "Ibaraki",  "Ishikawa", "Iwate",     "Kagawa",   "Kagoshima", "Kanagawa", "Kochi",
-          "Kumamoto",  "Kyoto",    "Mie",    "Miyagi",   "Miyazaki", "Nagano",    "Nagasaki", "Nara",      "Niigata",  "Oita",
-          "Okayama",   "Okinawa",  "Osaka",  "Saga",     "Saitama",  "Shiga",     "Shimane",  "Shizuoka",  "Tochigi",  "Tokushima",
-          "Tokyo",     "Tottori",  "Toyama", "Wakayama", "Yamagata", "Yamaguchi", "Yamanashi" ]
+names50 = [ "Aichi",     "Akita",    "Aomori", "Chiba",    "Ehime",    "Fukui",     "Fukuoka",   "Fukushima", "Gifu",      "Gunma",
+            "Hiroshima", "Hokkaido", "Hyogo",  "Ibaraki",  "Ishikawa", "Iwate",     "Kagawa",    "Kagoshima", "Kanagawa",  "Kochi",
+            "Kumamoto",  "Kyoto",    "Mie",    "Miyagi",   "Miyazaki", "Nagano",    "Nagasaki",  "Nara",      "Niigata",   "Oita",
+            "Okayama",   "Okinawa",  "Osaka",  "Saga",     "Saitama",  "Shiga",     "Shimane",   "Shizuoka",  "Tochigi",   "Tokushima",
+            "Tokyo",     "Tottori",  "Toyama", "Wakayama", "Yamagata", "Yamaguchi", "Yamanashi", "Dummy1",    "Dummy2",    "Dummy3" ]
+names = names50 + names50
 
 keyword = "Tokyo"
+
+printf( " --- \n" )
+printf( " --- Each match functions will be called %dMega times. --- \n", (names.size * looptimes) / (1000.0 * 1000.0) )
+printf( " --- \n" )
 
 puts "[Amatch]"
 puts Benchmark::CAPTION
@@ -30,7 +35,7 @@ puts Benchmark.measure {
 puts "[this Module (pure)]"
 puts Benchmark::CAPTION
 puts Benchmark.measure {
-  jarow = JaroWinkler::JaroWinkler.new.create
+  jarow = FuzzyStringMatch::JaroWinkler.new.create
   looptimes.times { |n|
     names.map { |x|
       jarow.getDistance( keyword, x )
@@ -40,7 +45,7 @@ puts Benchmark.measure {
 puts "[this Module (native)]"
 puts Benchmark::CAPTION
 puts Benchmark.measure {
-  jarow = JaroWinkler::JaroWinkler.new.create( :native )
+  jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
   looptimes.times { |n|
     names.map { |x|
       jarow.getDistance( keyword, x )
