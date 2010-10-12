@@ -12,9 +12,12 @@ Gem::Specification.new do |s|
   s.date = %q{2010-10-12}
   s.description = %q{calculate Jaro Winkler distance.}
   s.email = %q{kiyoka@sumibi.org}
+  s.extra_rdoc_files = [
+    "LICENSE.txt"
+  ]
   s.files = [
-    "lib/jarowinkler.rb",
-     "test/jarowinkler_spec.rb"
+    "lib/fuzzystringmatch.rb",
+     "test/fuzzystringmatch_spec.rb"
   ]
   s.homepage = %q{http://github.com/kiyoka/fuzzy-string-match}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -22,7 +25,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{fuzzy string matching library}
   s.test_files = [
-    "test/jarowinkler_spec.rb"
+    "test/fuzzystringmatch_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

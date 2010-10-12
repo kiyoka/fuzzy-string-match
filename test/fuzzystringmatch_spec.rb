@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# jarowinkler_spec.rb -  "RSpec file for Jaro Winkler distance"
+# fuzzystringmatch_spec.rb -  "RSpec file for FuzzyStringMatch module "
 #  
 #   Copyright (c) 2010  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
@@ -21,12 +21,12 @@
 #  limitations under the License.
 #
 #  
-require 'jarowinkler'
+require 'fuzzystringmatch'
 require 'amatch'
 
-describe JaroWinkler, "when some string distances (Pure) are" do
+describe FuzzyStringMatch, "when some string distances (Pure) are" do
   before do
-    @jarow = JaroWinkler::JaroWinkler.new.create
+    @jarow = FuzzyStringMatch::JaroWinkler.new.create
   end
   it "should" do
     @jarow.getDistance( "al",        "al"        ).should == 1.0
@@ -49,9 +49,9 @@ describe JaroWinkler, "when some string distances (Pure) are" do
   end
 end
 
-describe JaroWinkler, "when some string distances (Native) are" do
+describe FuzzyStringMatch, "when some string distances (Native) are" do
   before do
-    @jarow = JaroWinkler::JaroWinkler.new.create( :native )
+    @jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
   end
   it "should" do
     @jarow.getDistance( "al",        "al"        ).should == 1.0
