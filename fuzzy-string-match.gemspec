@@ -4,23 +4,23 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{kiyoka-jarowinkler}
+  s.name = %q{fuzzy-string-match}
   s.version = "0.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = %q{2010-10-05}
-  s.description = %q{Jaro Winkler distance algorythm.}
+  s.date = %q{2010-10-12}
+  s.description = %q{calculate Jaro Winkler distance.}
   s.email = %q{kiyoka@sumibi.org}
   s.files = [
     "lib/jarowinkler.rb",
      "test/jarowinkler_spec.rb"
   ]
-  s.homepage = %q{http://github.com/kiyoka/jarowinkler}
+  s.homepage = %q{http://github.com/kiyoka/fuzzy-string-match}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Jaro Winkler distance algorythm}
+  s.summary = %q{fuzzy string matching library}
   s.test_files = [
     "test/jarowinkler_spec.rb"
   ]
