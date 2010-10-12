@@ -29,6 +29,7 @@ describe FuzzyStringMatch, "when some string distances (Pure) are" do
     @jarow = FuzzyStringMatch::JaroWinkler.new.create
   end
   it "should" do
+    @jarow.getDistance( "henka",     "henkan"    ).should be_close( 0.9722, 0.0001 )
     @jarow.getDistance( "al",        "al"        ).should == 1.0
     @jarow.getDistance( "martha",    "marhta"    ).should be_close( 0.9611, 0.0001 )
     @jarow.getDistance( "jones",     "johnson"   ).should be_close( 0.8323, 0.0001 )
@@ -54,6 +55,7 @@ describe FuzzyStringMatch, "when some string distances (Native) are" do
     @jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
   end
   it "should" do
+    @jarow.getDistance( "henka",     "henkan"    ).should be_close( 0.9722, 0.0001 )
     @jarow.getDistance( "al",        "al"        ).should == 1.0
     @jarow.getDistance( "martha",    "marhta"    ).should be_close( 0.9611, 0.0001 )
     @jarow.getDistance( "jones",     "johnson"   ).should be_close( 0.8323, 0.0001 )
@@ -115,6 +117,7 @@ end
 
 describe Amatch, "when use Amatch gem, results are" do
   it "should" do
+    amatch_getDistance( "henka",     "henkan"    ).should be_close( 0.9666, 0.0001 )  ## amatch's result value is different from lucene version.
     amatch_getDistance( "al",        "al"        ).should == 1.0
     amatch_getDistance( "martha",    "marhta"    ).should be_close( 0.9611, 0.0001 )
     amatch_getDistance( "jones",     "johnson"   ).should be_close( 0.8323, 0.0001 )
