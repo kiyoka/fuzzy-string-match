@@ -16,12 +16,14 @@ Gem::Specification.new do |s|
     "LICENSE.txt"
   ]
   s.files = [
-    "lib/fuzzystringmatch.rb",
+    "LICENSE.txt",
+     "lib/fuzzystringmatch.rb",
      "test/fuzzystringmatch_spec.rb"
   ]
   s.homepage = %q{http://github.com/kiyoka/fuzzy-string-match}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.1")
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{fuzzy string matching library}
   s.test_files = [
@@ -34,11 +36,17 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<amatch>, [">= 0"])
+      s.add_runtime_dependency(%q<RubyInline>, [">= 3.8.6"])
     else
       s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<amatch>, [">= 0"])
+      s.add_dependency(%q<RubyInline>, [">= 3.8.6"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<amatch>, [">= 0"])
+    s.add_dependency(%q<RubyInline>, [">= 3.8.6"])
   end
 end
 

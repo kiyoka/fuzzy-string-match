@@ -20,8 +20,12 @@ begin
     gemspec.homepage = "http://github.com/kiyoka/fuzzy-string-match"
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['lib/*.rb',
-                             'test/*.rb'].to_a
-    gemspec.add_development_dependency "rspec"
+                             'test/*.rb',
+                             'LICENSE.txt'].to_a
+    gemspec.add_development_dependency( "rspec" )
+    gemspec.add_development_dependency( "amatch" )
+    gemspec.add_dependency('RubyInline', '>= 3.8.6')
+    gemspec.required_ruby_version = '>= 1.9.1'
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
