@@ -79,6 +79,40 @@ def amatch_getDistance( s1, s2 )
   @jarow.match( s2 )
 end
 
+
+describe FuzzyStringMatch, "when some UTF8 string distances (Pure) are" do
+  before do
+    @jarow = FuzzyStringMatch::JaroWinkler.new.create
+  end
+  it "should" do
+    @jarow.getDistance( "ａｌ",              "ａｌ"        ).should == 1.0
+    @jarow.getDistance( "ｍａｒｔｈａ",      "ｍａｒｈｔａ"    ).should be_close( 0.9611, 0.0001 )
+    @jarow.getDistance( "ｊｏｎｅｓ",        "ｊｏｈｎｓｏｎ"   ).should be_close( 0.8323, 0.0001 )
+    @jarow.getDistance( "ａｂｃｖｗｘｙｚ",  "ｃａｂｖｗｘｙｚ"  ).should be_close( 0.9583, 0.0001 )
+    @jarow.getDistance( "ｄｗａｙｎｅ",      "ｄｕａｎｅ"     ).should be_close( 0.8400, 0.0001 )
+    @jarow.getDistance( "ｄｉｘｏｎ",        "ｄｉｃｋｓｏｎｘ"  ).should be_close( 0.8133, 0.0001 )
+    @jarow.getDistance( "ｆｖｉｅ",          "ｔｅｎ"       ).should == 0.0
+    lambda {
+      d1 = @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｚａｃ　ｅｆｒｏｎ")
+      d2 = @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｋａｉ　ｅｐｈｒｏｎ")
+      d1 > d2
+    }.should be_true
+    lambda {
+      d1 = @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｎｅｙ　ｓｐｅａｒｓ")
+      d2 = @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｔｎｅｙ　ｓｔａｒｔｚｍａｎ")
+      d1 > d2
+    }.should be_true
+    @jarow.getDistance( "スパゲティー",              "スパゲッティー"    ).should be_close( 0.9666, 0.0001 )
+    @jarow.getDistance( "スパゲティー",              "スパゲティ"        ).should be_close( 0.9722, 0.0001 )
+    @jarow.getDistance( "スティービー・ワンダー",    "スピーディー・ワンダー"     ).should be_close( 0.8561, 0.0001 )
+    @jarow.getDistance( "マイケル・ジャクソン",      "ジャイケル・マクソン"       ).should be_close( 0.8000, 0.0001 )
+    @jarow.getDistance( "まつもとゆきひろ",          "まつもとひろゆき"           ).should be_close( 0.9500, 0.0001 )
+    @jarow.getDistance( "クライエント",              "クライアント"      ).should be_close( 0.9222, 0.0001 )
+    @jarow.getDistance( "サーバー",                  "サーバ"            ).should be_close( 0.9416, 0.0001 )
+  end
+end
+
+
 describe Amatch, "when use Amatch gem, results are" do
   it "should" do
     amatch_getDistance( "al",        "al"        ).should == 1.0
