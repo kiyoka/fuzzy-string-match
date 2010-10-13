@@ -2,7 +2,7 @@
 
 * fuzzy-string-match is a fuzzy string matching library for ruby.
 * It is fast. ( written in C with RubyInline )
-* It suports only Jaro-Winkler distance algorithm.
+* It supports only Jaro-Winkler distance algorithm.
 * This program was ported by hand from lucene-3.0.2. (lucene is Java product)
 * If you want to add another string distance algorithm, please port by yourself and contact me <kiyoka@sumibi.org>.
 
@@ -10,9 +10,9 @@
   1. gem install fuzzy-string-match
 
 ## Features
-* Caluclate Jaro-Winkler distance of two strings.
-  * Pure ruby version can handle both ascii and UTF8 strings. (and slow)
-  * Native version can only ascii strings. (and fast)
+* Calculate Jaro-Winkler distance of two strings.
+  * Pure ruby version can handle both ASCII and UTF8 strings. (and slow)
+  * Native version can only ASCII strings. (and fast)
 
 ## Sample code 
   * Native version
