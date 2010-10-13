@@ -21,7 +21,9 @@ begin
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['lib/*.rb',
                              'test/*.rb',
-                             'LICENSE.txt'].to_a
+                             'benchmark/*.rb',
+                             'LICENSE.txt',
+                             'README.md'].to_a
     gemspec.add_development_dependency( "rspec" )
     gemspec.add_development_dependency( "amatch" )
     gemspec.add_dependency('RubyInline', '>= 3.8.6')
