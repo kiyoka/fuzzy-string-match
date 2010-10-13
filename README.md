@@ -16,6 +16,7 @@
 
 ## Sample code 
   * Native version
+
 <code>
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
@@ -23,6 +24,7 @@
 </code>
 
   * Pure ruby version
+
 <code>
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.new.create( :pure )
@@ -30,6 +32,7 @@
 </code>
 
 ## Sample on irb
+
 <code>
     irb(main):001:0> require 'fuzzystringmatch'
     require 'fuzzystringmatch'
