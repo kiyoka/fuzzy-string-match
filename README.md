@@ -6,6 +6,12 @@
 * This program was ported by hand from lucene-3.0.2. (lucene is Java product)
 * If you want to add another string distance algorithm, please port by yourself and contact me <kiyoka@sumibi.org>.
 
+## The reason why i developed fuzzy-string-match
+* I tried amatch-0.2.5, but it contains some issues.
+  1. Some memory leaks.
+  2. I felt difficult to maintain it.
+* So, I decide to create another gem by porting lucene-3.0.x.
+
 ## Installing 
   1. gem install fuzzy-string-match
 
@@ -50,6 +56,25 @@
     jarow.getDistance( "dixon",     "dicksonx"  )
     => 0.8133333333333332
 </code>
+
+## Benchmarks
+
+<console>
+    $ rake bench
+    ruby ./benchmark/vs_amatch.rb
+     --- 
+     --- Each match functions will be called 1Mega times. --- 
+     --- 
+    [Amatch]
+          user     system      total        real
+      1.160000   0.050000   1.210000 (  1.218259)
+    [this Module (pure)]
+          user     system      total        real
+     39.940000   0.160000  40.100000 ( 40.542448)
+    [this Module (native)]
+          user     system      total        real
+      0.480000   0.000000   0.480000 (  0.484187)
+</console>
 
 ## Requires
  - RubyInline
