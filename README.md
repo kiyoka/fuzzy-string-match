@@ -85,9 +85,9 @@
  - I ported from java source code of lucene-3.0.2.
 
 ## See also
- - http://en.wikipedia.org/wiki/Jaro–Winkler_distance
- - http://lucene.apache.org/
- - http://github.com/naoya/perl-text-jarowinkler
+ - <http://en.wikipedia.org/wiki/Jaro–Winkler_distance>
+ - <http://lucene.apache.org/>
+ - <http://github.com/naoya/perl-text-jarowinkler>
 
 ## License
  - Apache 2.0 LICENSE
