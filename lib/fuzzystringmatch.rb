@@ -1,5 +1,5 @@
 #
-#                            Fuzzy String Match 
+#                            Fuzzy String Match
 #
 #   Copyright 2010 Kiyoka Nishiyama
 #
@@ -16,7 +16,7 @@
 #   limitations under the License.
 #
 module FuzzyStringMatch
-  
+
   class JaroWinkler
     def create( type = :pure )     # factory method
       case type
@@ -34,7 +34,7 @@ module FuzzyStringMatch
     def getDistance( s1, s2 )
       a1 = s1.split( // )
       a2 = s2.split( // )
-      
+
       if s1.size > s2.size
         (max,min) = a1,a2
       else
@@ -50,7 +50,7 @@ module FuzzyStringMatch
         c1 = min[mi]
         xi = [mi - range, 0].max
         xn = [mi + range + 1, max.size].min
-        
+
         (xi ... xn).each { |i|
           if (not flags[i]) && ( c1 == max[i] )
             indexes[mi] = i
@@ -79,7 +79,7 @@ module FuzzyStringMatch
           si += 1
         end
       }
-      
+
       transpositions = 0
       (0 ... ms1.size).each { |mi|
         if ms1[mi] != ms2[mi]
@@ -110,7 +110,8 @@ module FuzzyStringMatch
   require 'inline'
   class JaroWinklerNative
     inline do |builder|
-      builder.add_compile_flags '-std=c99'
+      builder.include '<iostream>'
+      builder.add_compile_flags '-x c++', '-lstdc++'
       builder.c_raw 'int max( int a, int b ) { return ((a)>(b)?(a):(b)); }'
       builder.c_raw 'int min( int a, int b ) { return ((a)<(b)?(a):(b)); }'
       builder.c_raw 'double double_min( double a, double b ) { return ((a)<(b)?(a):(b)); }'
@@ -130,7 +131,7 @@ double getDistance( char *s1, char *s2 )
     _min = s1; _min_length = strlen(s1);
   }
   int range = max( _max_length / 2 - 1, 0 );
-  
+
   int indexes[_min_length];
   for( int i = 0 ; i < _min_length ; i++ ) {
     indexes[i] = -1;
@@ -156,7 +157,7 @@ double getDistance( char *s1, char *s2 )
   char ms1[matches];
   char ms2[matches];
   int ms1_length = matches;
-  
+
   for (int i = 0, si = 0; i < _min_length; i++) {
     if (indexes[i] != -1) {
       ms1[si] = _min[i];

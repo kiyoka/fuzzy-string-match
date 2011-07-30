@@ -2,7 +2,7 @@
 #
 # Release Engineering
 #   1. edit the VERSION.yml file
-#   2. rake check
+#   2. rake test
 #   3. rake gemspec  &&   rake build
 #      to generate fuzzy-string-match-x.x.x.gem
 #   4. install fuzzy-string-match-x.x.x.gem to clean environment and test
@@ -33,8 +33,8 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
 
-task :check do
-  sh "ruby -I ./lib /usr/local/bin/spec -b ./test/fuzzystringmatch_spec.rb"
+task :test do
+  sh "ruby -I ./lib /usr/local/bin/rspec -b ./test/fuzzystringmatch_spec.rb"
 end
 
 task :bench do
