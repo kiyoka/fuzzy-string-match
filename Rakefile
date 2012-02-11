@@ -19,15 +19,16 @@ begin
     gemspec.email = "kiyoka@sumibi.org"
     gemspec.homepage = "http://github.com/kiyoka/fuzzy-string-match"
     gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['lib/*.rb',
+    gemspec.files = FileList['.gemtest',
+                             'Rakefile',
+                             'VERSION.yml',
+                             'lib/*.rb',
                              'test/basic_spec.rb',
                              'test/mutibyte_spec.rb',
-                             'benchmark/*.rb',
                              'LICENSE.txt',
                              'README.md'].to_a
     gemspec.add_dependency( "rspec" )
-    gemspec.add_dependency('RubyInline', '>= 3.8.6')
-    gemspec.add_development_dependency( "amatch" )
+    gemspec.add_dependency( 'RubyInline', '>= 3.8.6')
     gemspec.required_ruby_version = '>= 1.9.1'
   end
 rescue LoadError
