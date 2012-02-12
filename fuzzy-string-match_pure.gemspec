@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION.yml",
     "lib/fuzzystringmatch.rb",
-    "lib/fuzzystringmatch/inline.rb",
-    "lib/fuzzystringmatch/inline/jarowinkler.rb",
     "lib/fuzzystringmatch/pure.rb",
     "lib/fuzzystringmatch/pure/jarowinkler.rb",
     "test/basic_pure_spec.rb",

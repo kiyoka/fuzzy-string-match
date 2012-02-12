@@ -27,8 +27,6 @@ begin
     gemspec.files = FileList['.gemtest',
                              'Rakefile',
                              'VERSION.yml',
-                             'lib/fuzzystringmatch/inline/jarowinkler.rb',
-                             'lib/fuzzystringmatch/inline.rb',
                              'lib/fuzzystringmatch/pure/jarowinkler.rb',
                              'lib/fuzzystringmatch/pure.rb',
                              'lib/fuzzystringmatch.rb',
