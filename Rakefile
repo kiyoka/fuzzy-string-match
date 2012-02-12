@@ -44,6 +44,7 @@ end
 
 task :test do
   sh "ruby -I ./lib `which rspec` -b ./test/basic_spec.rb"
+  sh "ruby -I ./lib `which rspec` -b ./test/basic_pure_spec.rb"
   sh "ruby -I ./lib `which rspec` -b ./test/mutibyte_spec.rb"
 end
 

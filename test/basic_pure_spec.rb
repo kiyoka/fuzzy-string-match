@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# basic_spec.rb -  "Basic test-cases for FuzzyStringMatch module "
+# basic_pure_spec.rb -  "Basic test-cases for FuzzyStringMatch module "
 #  
 #   Copyright (c) 2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
@@ -25,7 +25,7 @@ require 'fuzzystringmatch'
 
 describe FuzzyStringMatch, "when some string distances (Pure) are" do
   before do
-    @jarow = FuzzyStringMatch::JaroWinkler.new.create
+    @jarow = FuzzyStringMatch::JaroWinkler.create
   end
   it "should" do
     @jarow.getDistance( "henka",     "henkan"    ).should be_within(0.0001).of(0.9722)

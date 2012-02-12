@@ -15,26 +15,4 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-require 'fuzzystringmatch/pure'
-begin
-  require 'fuzzystringmatch/inline'
-rescue LoadError
-end
-
-module FuzzyStringMatch
-  class JaroWinkler
-    def self.create( type = :pure )     # factory method
-      case type
-      when :pure
-        FuzzyStringMatch::JaroWinklerPure.new
-      when :native
-        begin
-          FuzzyStringMatch::JaroWinklerInline.new
-        rescue NameError
-          STDERR.puts "Warning: native version is disabled. falled back to pure ruby version..."
-          FuzzyStringMatch::JaroWinklerPure.new
-        end
-      end
-    end
-  end
-end
+require 'fuzzystringmatch/pure/jarowinkler'

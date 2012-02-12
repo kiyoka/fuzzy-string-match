@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# basic_spec.rb -  "Multibyte test-cases for FuzzyStringMatch module "
+# mutibyte_spec.rb -  "Multibyte test-cases for FuzzyStringMatch module "
 #  
 #   Copyright (c) 2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
@@ -25,7 +25,7 @@ require 'fuzzystringmatch'
 
 describe FuzzyStringMatch, "when some UTF8 string distances (Pure) are" do
   before do
-    @jarow = FuzzyStringMatch::JaroWinkler.new.create
+    @jarow = FuzzyStringMatch::JaroWinkler.create
   end
   it "should" do
     @jarow.getDistance( "ａｌ",              "ａｌ"             ).should == 1.0

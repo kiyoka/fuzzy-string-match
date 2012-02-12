@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 #
-# basic_spec.rb -  "Verify test-cases for FuzzyStringMatch module "
+# verify_with_amatch_spec.rb -  "Verify test-cases for FuzzyStringMatch module "
 #  
 #   Copyright (c) 2011  Kiyoka Nishiyama  <kiyoka@sumibi.org>
 #
@@ -21,7 +21,6 @@
 #  limitations under the License.
 #
 #  
-require 'fuzzystringmatch'
 require 'amatch'
 
 
