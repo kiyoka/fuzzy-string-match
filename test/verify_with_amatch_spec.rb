@@ -26,6 +26,7 @@ require 'amatch'
 
 def amatch_getDistance( s1, s2 )
   @jarow = Amatch::JaroWinkler.new( s1 )
+  @jarow.ignore_case = false 
   @jarow.match( s2 )
 end
 
