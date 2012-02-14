@@ -19,6 +19,10 @@ module FuzzyStringMatch
   class JaroWinklerPure
     THRESHOLD = 0.7
 
+    def pure?
+      true
+    end
+
     def getDistance( s1, s2 )
       a1 = s1.split( // )
       a2 = s2.split( // )

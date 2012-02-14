@@ -46,5 +46,7 @@ describe FuzzyStringMatch, "when some string distances (Native) are" do
       d2 = @jarow.getDistance("brittney spears", "brittney startzman")
       d1 > d2
     }.should be_true
+
+    @jarow.pure?( ).should == (RUBY_PLATFORM == "java")
   end
 end

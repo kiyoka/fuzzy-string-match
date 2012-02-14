@@ -52,5 +52,7 @@ describe FuzzyStringMatch, "when some UTF8 string distances (Pure) are" do
     @jarow.getDistance( "まつもとゆきひろ",          "まつもとひろゆき"           ).should be_within(0.0001).of(0.9500)
     @jarow.getDistance( "クライエント",              "クライアント"               ).should be_within(0.0001).of(0.9222)
     @jarow.getDistance( "サーバー",                  "サーバ"                     ).should be_within(0.0001).of(0.9416)
+
+    @jarow.pure?( ).should be_true
   end
 end

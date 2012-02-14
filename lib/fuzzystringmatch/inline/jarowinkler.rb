@@ -18,6 +18,10 @@
 module FuzzyStringMatch
   require 'inline'
   class JaroWinklerInline
+    def pure?
+      false
+    end
+
     inline do |builder|
       builder.include '<iostream>'
       builder.add_compile_flags '-x c++', '-lstdc++'

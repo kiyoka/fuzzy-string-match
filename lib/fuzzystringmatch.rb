@@ -17,7 +17,11 @@
 #
 require 'fuzzystringmatch/pure'
 begin
-  require 'fuzzystringmatch/inline'
+  if RUBY_PLATFORM == "java"
+    STDERR.puts "Warning: native version is disabled on java platform. falled back to pure ruby version..."
+  else
+    require 'fuzzystringmatch/inline'
+  end
 rescue LoadError
 end
 
