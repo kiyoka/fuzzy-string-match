@@ -70,7 +70,7 @@
 
 ## Benchmarks
 
-<console>
+<code>
     $ rake bench
     ruby ./benchmark/vs_amatch.rb
      --- 
@@ -85,7 +85,7 @@
     [this Module (native)]
           user     system      total        real
       0.480000   0.000000   0.480000 (  0.484187)
-</console>
+</code>
 
 ## Requires
 
