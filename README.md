@@ -1,4 +1,5 @@
 # What is fuzzy-string-match
+  [![Build Status](https://secure.travis-ci.org/kiyoka/fuzzy-string-match.png)](http://travis-ci.org/kiyoka/fuzzy-string-match)
 
 * fuzzy-string-match is a fuzzy string matching library for ruby.
 * It is fast. ( written in C with RubyInline )
