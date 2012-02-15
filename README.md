@@ -4,28 +4,31 @@
 * It is fast. ( written in C with RubyInline )
 * It supports only Jaro-Winkler distance algorithm.
 * This program was ported by hand from lucene-3.0.2. (lucene is Java product)
-* If you want to add another string distance algorithm, please port by yourself and contact me <kiyoka@sumibi.org>.
+* If you want to add another string distance algorithm, please fork it on github and port by yourself.
 
 ## The reason why i developed fuzzy-string-match
 * I tried amatch-0.2.5, but it contains some issues.
-  1. Some memory leaks.
+  1. memory leaks.
   2. I felt difficult to maintain it.
 * So, I decide to create another gem by porting lucene-3.0.x.
 
-## Installing 
+## Installing
   1. gem install fuzzy-string-match
+
+## Installing (pure ruby version)
+  1. gem install fuzzy-string-match_pure
 
 ## Features
 * Calculate Jaro-Winkler distance of two strings.
   * Pure ruby version can handle both ASCII and UTF8 strings. (and slow)
-  * Native version can only ASCII strings. (and fast)
+  * Native version can only ASCII strings. (but it is fast)
 
 ## Sample code 
   * Native version
 
 <code>
     require 'fuzzystringmatch'
-    jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
+    jarow = FuzzyStringMatch::JaroWinkler.create( :native )
     p jarow.getDistance(  "jones",      "johnson" )
 </code>
 
@@ -33,8 +36,9 @@
 
 <code>
     require 'fuzzystringmatch'
-    jarow = FuzzyStringMatch::JaroWinkler.new.create( :pure )
-    p jarow.getDistance( "ああ",        "あい"        )
+    jarow = FuzzyStringMatch::JaroWinkler.create( :pure )
+    p jarow.getDistance(  "jones",      "johnson" )
+    p jarow.getDistance(  "ああ",        "あい"        )
 </code>
 
 ## Sample on irb
@@ -44,8 +48,8 @@
     require 'fuzzystringmatch'
     => true
 
-    irb(main):002:0> jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
-    jarow = FuzzyStringMatch::JaroWinkler.new.create( :native )
+    irb(main):002:0> jarow = FuzzyStringMatch::JaroWinkler.create( :native )
+    jarow = FuzzyStringMatch::JaroWinkler.create( :native )
     => #<FuzzyStringMatch::JaroWinklerNative:0x000001011b0010>
 
     irb(main):003:0> jarow.getDistance( "al",        "al"        )
@@ -77,8 +81,11 @@
 </console>
 
 ## Requires
- - RubyInline
- - Ruby 1.9.1 or higher
+### for CRuby
+ -- RubyInline
+ -- Ruby 1.9.1 or higher
+### for JRuby
+ - JRuby 1.6.6 or higher
 
 ## Author
  - Copyright (C) Kiyoka Nishiyama <kiyoka@sumibi.org>
