@@ -18,7 +18,7 @@
 require 'fuzzystringmatch/pure'
 begin
   if RUBY_PLATFORM == "java"
-    STDERR.puts "Warning: native version is disabled on java platform. falled back to pure ruby version..."
+    STDERR.puts "fuzzy-string-match Warning: native version is disabled on java platform. falled back to pure ruby version..."
   else
     require 'fuzzystringmatch/inline'
   end
@@ -35,10 +35,14 @@ module FuzzyStringMatch
         begin
           FuzzyStringMatch::JaroWinklerInline.new
         rescue NameError
-          STDERR.puts "Warning: native version is disabled. falled back to pure ruby version..."
+          STDERR.puts "fuzzy-string-match Warning: native version is disabled. falled back to pure ruby version..."
           FuzzyStringMatch::JaroWinklerPure.new
         end
       end
+    end
+    def create( type = :pure )         # this is obsolute
+      STDERR.puts "fuzzy-string-match Warning: FuzzyStringMatch.new.create() is obsolute, please use FuzzyStringMatch.create() ..."
+      FuzzyStringMatch::JaroWinkler.create( type )
     end
   end
 end

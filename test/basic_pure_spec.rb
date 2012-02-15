@@ -50,3 +50,13 @@ describe FuzzyStringMatch, "when some string distances (Pure) are" do
     @jarow.pure?( ).should be_true
   end
 end
+
+describe FuzzyStringMatch, "when older factory method was called, (Pure) are" do
+  before do
+    @jarow = FuzzyStringMatch::JaroWinkler.new.create
+  end
+  it "should" do
+    @jarow.getDistance( "henka",     "henkan"    ).should be_within(0.0001).of(0.9722)
+    @jarow.pure?( ).should be_true
+  end
+end
