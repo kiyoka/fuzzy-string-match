@@ -88,9 +88,11 @@
 </console>
 
 ## Requires
+
 ### for CRuby
  - RubyInline
  - Ruby 1.9.1 or higher
+
 ### for JRuby
  - JRuby 1.6.6 or higher
 
