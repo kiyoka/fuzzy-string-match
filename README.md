@@ -28,13 +28,13 @@
 
 ## Sample code 
 
-  * Native version
+### Native version
 
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.create( :native )
     p jarow.getDistance(  "jones",      "johnson" )
 
-  * Pure ruby version
+### Pure ruby version
 
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.create( :pure )
