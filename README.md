@@ -14,10 +14,16 @@
 * So, I decide to create another gem by porting lucene-3.0.x.
 
 ## Installing
-  1. gem install fuzzy-string-match
+
+<code>
+    gem install fuzzy-string-match
+</code>
 
 ## Installing (pure ruby version)
-  1. gem install fuzzy-string-match_pure
+
+<code>
+    gem install fuzzy-string-match_pure
+</code>
 
 ## Features
 * Calculate Jaro-Winkler distance of two strings.
@@ -83,8 +89,8 @@
 
 ## Requires
 ### for CRuby
- -- RubyInline
- -- Ruby 1.9.1 or higher
+ - RubyInline
+ - Ruby 1.9.1 or higher
 ### for JRuby
  - JRuby 1.6.6 or higher
 
