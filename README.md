@@ -15,15 +15,11 @@
 
 ## Installing
 
-<code>
     gem install fuzzy-string-match
-</code>
 
 ## Installing (pure ruby version)
 
-<code>
     gem install fuzzy-string-match_pure
-</code>
 
 ## Features
 * Calculate Jaro-Winkler distance of two strings.
@@ -31,26 +27,22 @@
   * Native version can only ASCII strings. (but it is fast)
 
 ## Sample code 
+
   * Native version
 
-<code>
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.create( :native )
     p jarow.getDistance(  "jones",      "johnson" )
-</code>
 
   * Pure ruby version
 
-<code>
     require 'fuzzystringmatch'
     jarow = FuzzyStringMatch::JaroWinkler.create( :pure )
     p jarow.getDistance(  "jones",      "johnson" )
     p jarow.getDistance(  "ああ",        "あい"        )
-</code>
 
 ## Sample on irb
 
-<code>
     irb(main):001:0> require 'fuzzystringmatch'
     require 'fuzzystringmatch'
     => true
@@ -66,11 +58,9 @@
     irb(main):004:0> jarow.getDistance( "dixon",     "dicksonx"  )
     jarow.getDistance( "dixon",     "dicksonx"  )
     => 0.8133333333333332
-</code>
 
 ## Benchmarks
 
-<code>
     $ rake bench
     ruby ./benchmark/vs_amatch.rb
      --- 
@@ -85,7 +75,6 @@
     [this Module (native)]
           user     system      total        real
       0.480000   0.000000   0.480000 (  0.484187)
-</code>
 
 ## Requires
 
