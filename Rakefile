@@ -35,7 +35,7 @@ begin
                              'test/mutibyte_spec.rb',
                              'LICENSE.txt',
                              'README.md'].to_a
-    gemspec.add_dependency( "rspec" )
+    gemspec.add_development_dependency( "rspec" )
     gemspec.required_ruby_version = '>= 1.9.1'
   end
 
@@ -59,7 +59,7 @@ begin
                              'test/mutibyte_spec.rb',
                              'LICENSE.txt',
                              'README.md'].to_a
-    gemspec.add_dependency( "rspec" )
+    gemspec.add_development_dependency( "rspec" )
     gemspec.add_dependency( 'RubyInline', '>= 3.8.6')
     gemspec.required_ruby_version = '>= 1.9.1'
   end
