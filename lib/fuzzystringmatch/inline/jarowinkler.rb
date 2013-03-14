@@ -34,8 +34,8 @@ double getDistance( char *s1, char *s2 )
 {
   char *_max;
   char *_min;
-  int _max_length = 0;
-  int _min_length = 0;
+  long _max_length = 0;
+  long _min_length = 0;
   if ( strlen(s1) > strlen(s2) ) {
     _max = s1; _max_length = strlen(s1);
     _min = s2; _min_length = strlen(s2);
@@ -46,8 +46,8 @@ double getDistance( char *s1, char *s2 )
   }
   int range = max( _max_length / 2 - 1, 0 );
 
-  int indexes[_min_length];
-  for( int i = 0 ; i < _min_length ; i++ ) {
+  long indexes[_min_length];
+  for( long i = 0 ; i < _min_length ; i++ ) {
     indexes[i] = -1;
   }
 
