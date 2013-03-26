@@ -15,7 +15,7 @@
 
 require 'rake'
 begin
-  require 'jeweler'
+  require 'jeweler2'
 
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "fuzzy-string-match_pure"

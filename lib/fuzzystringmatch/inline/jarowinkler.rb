@@ -30,24 +30,26 @@ module FuzzyStringMatch
       builder.c_raw 'int min( int a, int b ) { return ((a)<(b)?(a):(b)); }'
       builder.c_raw 'double double_min( double a, double b ) { return ((a)<(b)?(a):(b)); }'
       builder.c '
+
+
 double getDistance( char *s1, char *s2 )
 {
   char *_max;
   char *_min;
-  long _max_length = 0;
-  long _min_length = 0;
+  int _max_length = 0;
+  int _min_length = 0;
   if ( strlen(s1) > strlen(s2) ) {
-    _max = s1; _max_length = strlen(s1);
-    _min = s2; _min_length = strlen(s2);
+    _max = s1; _max_length = (int)strlen(s1);
+    _min = s2; _min_length = (int)strlen(s2);
   }
   else {
-    _max = s2; _max_length = strlen(s2);
-    _min = s1; _min_length = strlen(s1);
+    _max = s2; _max_length = (int)strlen(s2);
+    _min = s1; _min_length = (int)strlen(s1);
   }
   int range = max( _max_length / 2 - 1, 0 );
 
-  long indexes[_min_length];
-  for( long i = 0 ; i < _min_length ; i++ ) {
+  int indexes[_min_length];
+  for( int i = 0 ; i < _min_length ; i++ ) {
     indexes[i] = -1;
   }
 
