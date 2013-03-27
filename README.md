@@ -95,4 +95,43 @@
  - <http://github.com/naoya/perl-text-jarowinkler>
 
 ## License
+
  - Apache 2.0 LICENSE
+
+## ChangeLog
+
+### 0.9.5 / March 26, 2013
+
+* Fixed: 'jarowinkler.rb:42: warning: implicit conversion shortens 64-bit value into a 32-bit value' on MacOS X 64bit env.
+
+### 0.9.4 / July 10, 2012
+
+* Fixed: undefined method getDistance' for #<FuzzyStringMatch::JaroWinklerInline:...>
+
+### 0.9.3 / Feb 27, 2012
+
+* Changed gem dependency of `rspec'.
+   gemspec.dependency( "rspec" )  to  gemspec.development_dependency( "rspec" )
+
+### 0.9.2 / Feb 17, 2012
+
+* Supported JRuby platform
+* Divided into two gems.
+
+  1. fuzzy-string-match      ... native (RubyInline) version.
+  2. fuzzy-string-match_pure ... pure ruby version
+
+* Divided rspec files into several files.
+
+* Supported testable gem
+   Please install rubygems-test and "gem test".
+
+### 0.9.1 / Jul 30, 2011
+
+* Changed gcc compiler's option for RubyInline.
+
+* Stoped to use obsolute method of RSpec.
+
+### 0.9.0 / Oct 12, 2010
+
+* First release.
