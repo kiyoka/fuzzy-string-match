@@ -106,7 +106,7 @@
 
 ### 0.9.4 / July 10, 2012
 
-* Fixed: undefined method getDistance' for #<FuzzyStringMatch::JaroWinklerInline:...>
+* Fixed: undefined method getDistance' error.
 
 ### 0.9.3 / Feb 27, 2012
 
