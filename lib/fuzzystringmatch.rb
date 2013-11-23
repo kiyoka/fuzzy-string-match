@@ -16,18 +16,6 @@
 #   limitations under the License.
 #
 require 'fuzzystringmatch/pure'
-begin
-  if RUBY_PLATFORM == "java"
-    STDERR.puts "fuzzy-string-match Warning: native version is disabled on java platform. falled back to pure ruby version..."
-  else
-    begin
-      require 'fuzzystringmatch/inline'
-    rescue CompilationError
-      STDERR.puts "fuzzy-string-match Warning: fallback into pure version, because compile failed."
-    end
-  end
-rescue LoadError
-end
 
 module FuzzyStringMatch
   class JaroWinkler
@@ -35,14 +23,27 @@ module FuzzyStringMatch
       case type
       when :pure
         FuzzyStringMatch::JaroWinklerPure.new
+
       when :native
-        begin
-          FuzzyStringMatch::JaroWinklerInline.new
-        rescue NameError
-          STDERR.puts "fuzzy-string-match Warning: native version is disabled. falled back to pure ruby version..."
+        if RUBY_PLATFORM == "java"
+          STDERR.puts "fuzzy-string-match Warning: native version is disabled on java platform. falled back to pure ruby version..."
           FuzzyStringMatch::JaroWinklerPure.new
+        else
+          begin
+            require 'fuzzystringmatch/inline'
+            begin
+              FuzzyStringMatch::JaroWinklerInline.new
+            rescue NameError
+              STDERR.puts "fuzzy-string-match Warning: native version is disabled. falled back to pure ruby version..."
+              FuzzyStringMatch::JaroWinklerPure.new
+            end
+          rescue CompilationError
+            STDERR.puts "fuzzy-string-match Warning: fallback into pure version, because compile failed."
+            FuzzyStringMatch::JaroWinklerPure.new
+          end
         end
       end
+
     end
   end
 end
