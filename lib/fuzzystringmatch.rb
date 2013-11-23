@@ -40,9 +40,5 @@ module FuzzyStringMatch
         end
       end
     end
-    def create( type = :pure )         # this is obsolute
-      STDERR.puts "fuzzy-string-match Warning: FuzzyStringMatch.new.create() is obsolute, please use FuzzyStringMatch.create() ..."
-      FuzzyStringMatch::JaroWinkler.create( type )
-    end
   end
 end

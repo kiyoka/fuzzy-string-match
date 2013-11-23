@@ -51,12 +51,8 @@ describe FuzzyStringMatch, "when some string distances (Native) are" do
   end
 end
 
-describe FuzzyStringMatch, "when older factory method was called, (Pure) are" do
-  before do
-    @jarow = FuzzyStringMatch::JaroWinkler.new.create
-  end
+describe FuzzyStringMatch, "when older factory method was called, (Native) are" do
   it "should" do
-    @jarow.getDistance( "henka",     "henkan"    ).should be_within(0.0001).of(0.9722)
-    @jarow.pure?( ).should be_true
+    lambda { FuzzyStringMatch::JaroWinkler.new.create( :native ) }.should    raise_error(NoMethodError)
   end
 end
