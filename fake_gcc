@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "fake_gcc: $1 compile failded."
+false
+
+
+
