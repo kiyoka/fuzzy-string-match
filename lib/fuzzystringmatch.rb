@@ -20,7 +20,11 @@ begin
   if RUBY_PLATFORM == "java"
     STDERR.puts "fuzzy-string-match Warning: native version is disabled on java platform. falled back to pure ruby version..."
   else
-    require 'fuzzystringmatch/inline'
+    begin
+      require 'fuzzystringmatch/inline'
+    rescue CompilationError
+      STDERR.puts "fuzzy-string-match Warning: fallback into pure version, because compile failed."
+    end
   end
 rescue LoadError
 end
