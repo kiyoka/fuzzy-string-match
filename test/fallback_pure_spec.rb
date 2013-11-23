@@ -27,6 +27,7 @@ require 'inline'
 
 describe Inline, "when c compile failed, fall back into pure " do
   it "should" do
+    pending ("because JRuby always in pure mode.") if (RUBY_PLATFORM == "java")
     lambda { require 'fuzzystringmatch' }.should   raise_error( CompilationError )
   end
 end
