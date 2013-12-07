@@ -3,7 +3,7 @@
 # Release Engineering
 #   1. edit the VERSION.yml file
 #   2. rake test
-#   3. rake gemspec  &&   rake build
+#   3. rake gemspec  &&   gem build fuzzy-string-match.gemspec
 #      to generate fuzzy-string-match-x.x.x.gem
 #   4. install fuzzy-string-match-x.x.x.gem to clean environment and test
 #   5. rake release
@@ -18,32 +18,11 @@ begin
   require 'jeweler2'
 
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "fuzzy-string-match_pure"
-    gemspec.summary = "fuzzy string matching library (Pure ruby version)"
-    gemspec.description = "calculate Jaro Winkler distance."
-    gemspec.email = "kiyoka@sumibi.org"
-    gemspec.homepage = "http://github.com/kiyoka/fuzzy-string-match"
-    gemspec.authors = ["Kiyoka Nishiyama"]
-    gemspec.files = FileList['.gemtest',
-                             'Rakefile',
-                             'VERSION.yml',
-                             'lib/fuzzystringmatch/pure/jarowinkler.rb',
-                             'lib/fuzzystringmatch/pure.rb',
-                             'lib/fuzzystringmatch.rb',
-                             'lib/*.rb',
-                             'test/basic_pure_spec.rb',
-                             'test/mutibyte_spec.rb',
-                             'LICENSE.txt',
-                             'README.md'].to_a
-    gemspec.add_development_dependency( "rspec" )
-    gemspec.required_ruby_version = '>= 1.9.1'
-  end
-
-  Jeweler::Tasks.new do |gemspec|
     gemspec.name = "fuzzy-string-match"
     gemspec.summary = "fuzzy string matching library"
     gemspec.description = "calculate Jaro Winkler distance."
     gemspec.email = "kiyoka@sumibi.org"
+    gemspec.license = 'Apache-2.0'
     gemspec.homepage = "http://github.com/kiyoka/fuzzy-string-match"
     gemspec.authors = ["Kiyoka Nishiyama"]
     gemspec.files = FileList['.gemtest',
