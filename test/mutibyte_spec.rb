@@ -25,7 +25,7 @@ require 'fuzzystringmatch'
 
 describe FuzzyStringMatch, "when some UTF8 string distances (Pure) are" do
   before do
-    @jarow = FuzzyStringMatch::JaroWinkler.create
+    @jarow = FuzzyStringMatch::JaroWinkler.create( :pure )
   end
   it "should" do
     @jarow.getDistance( "ａｌ",              "ａｌ"             ).should == 1.0

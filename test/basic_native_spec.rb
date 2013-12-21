@@ -51,6 +51,18 @@ describe FuzzyStringMatch, "when some string distances (Native) are" do
   end
 end
 
+
+describe FuzzyStringMatch, "create Native mode object is default behavior" do
+  before do
+    @jarow = FuzzyStringMatch::JaroWinkler.create( )
+  end
+  it "should" do
+    pending ("because JRuby always in pure mode.") if (RUBY_PLATFORM == "java")
+    @jarow.pure?( ).should be_false
+  end
+end
+
+
 describe FuzzyStringMatch, "when older factory method was called, (Native) are" do
   it "should" do
     lambda { FuzzyStringMatch::JaroWinkler.new.create( :native ) }.should    raise_error(NoMethodError)

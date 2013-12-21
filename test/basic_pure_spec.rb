@@ -25,7 +25,7 @@ require 'fuzzystringmatch'
 
 describe FuzzyStringMatch, "when some string distances (Pure) are" do
   before do
-    @jarow = FuzzyStringMatch::JaroWinkler.create
+    @jarow = FuzzyStringMatch::JaroWinkler.create( :pure )
   end
   it "should" do
     @jarow.getDistance( "henka",     "henkan"    ).should be_within(0.0001).of(0.9722)
