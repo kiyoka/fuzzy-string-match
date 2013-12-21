@@ -19,7 +19,7 @@ require 'fuzzystringmatch/pure'
 
 module FuzzyStringMatch
   class JaroWinkler
-    def self.create( type = :native )     # factory method
+    def self.create( type = :pure )     # factory method
       case type
       when :pure
         FuzzyStringMatch::JaroWinklerPure.new
