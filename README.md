@@ -17,10 +17,6 @@
 
     gem install fuzzy-string-match
 
-## Installing (pure ruby version)
-
-    gem install fuzzy-string-match_pure
-
 ## Features
 * Calculate Jaro-Winkler distance of two strings.
   * Pure ruby version can handle both ASCII and UTF8 strings. (and slow)
@@ -80,7 +76,7 @@
 
 ### for CRuby
  - RubyInline
- - Ruby 1.9.1 or higher
+ - Ruby 1.9.2 or higher ( includes RubyInstaller.org's CRuby on Windows )
 
 ### for JRuby
  - JRuby 1.6.6 or higher
@@ -100,7 +96,12 @@
 
 ## ChangeLog
 
-### 0.9.5 / March 26, 2013
+### 0.9.6 / Dec  21, 2013
+
+* New feature: fuzzy-string-match falls back into pure ruby mode when c-compile fails.
+* fuzzy-string-match_pure is obsolute gem 
+
+### 0.9.5 / Mar  26, 2013
 
 * Fixed: 'jarowinkler.rb:42: warning: implicit conversion shortens 64-bit value into a 32-bit value' on MacOS X 64bit env.
 
