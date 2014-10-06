@@ -28,31 +28,22 @@ describe FuzzyStringMatch, "when some UTF8 string distances (Pure) are" do
     @jarow = FuzzyStringMatch::JaroWinkler.create
   end
   it "should" do
-    @jarow.getDistance( "ａｌ",              "ａｌ"             ).should == 1.0
-    @jarow.getDistance( "ｍａｒｔｈａ",      "ｍａｒｈｔａ"     ).should be_within(0.0001).of(0.9611)
-    @jarow.getDistance( "ｊｏｎｅｓ",        "ｊｏｈｎｓｏｎ"   ).should be_within(0.0001).of(0.8323)
-    @jarow.getDistance( "ａｂｃｖｗｘｙｚ",  "ｃａｂｖｗｘｙｚ" ).should be_within(0.0001).of(0.9583)
-    @jarow.getDistance( "ｄｗａｙｎｅ",      "ｄｕａｎｅ"       ).should be_within(0.0001).of(0.8400)
-    @jarow.getDistance( "ｄｉｘｏｎ",        "ｄｉｃｋｓｏｎｘ" ).should be_within(0.0001).of(0.8133)
-    @jarow.getDistance( "ｆｖｉｅ",          "ｔｅｎ"           ).should == 0.0
-    lambda {
-      d1 = @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｚａｃ　ｅｆｒｏｎ")
-      d2 = @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｋａｉ　ｅｐｈｒｏｎ")
-      d1 > d2
-    }.should be_true
-    lambda {
-      d1 = @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｎｅｙ　ｓｐｅａｒｓ")
-      d2 = @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｔｎｅｙ　ｓｔａｒｔｚｍａｎ")
-      d1 > d2
-    }.should be_true
-    @jarow.getDistance( "スパゲティー",              "スパゲッティー"             ).should be_within(0.0001).of(0.9666)
-    @jarow.getDistance( "スパゲティー",              "スパゲティ"                 ).should be_within(0.0001).of(0.9722)
-    @jarow.getDistance( "スティービー・ワンダー",    "スピーディー・ワンダー"     ).should be_within(0.0001).of(0.8561)
-    @jarow.getDistance( "マイケル・ジャクソン",      "ジャイケル・マクソン"       ).should be_within(0.0001).of(0.8000)
-    @jarow.getDistance( "まつもとゆきひろ",          "まつもとひろゆき"           ).should be_within(0.0001).of(0.9500)
-    @jarow.getDistance( "クライエント",              "クライアント"               ).should be_within(0.0001).of(0.9222)
-    @jarow.getDistance( "サーバー",                  "サーバ"                     ).should be_within(0.0001).of(0.9416)
-
-    @jarow.pure?( ).should be_true
+    expect( @jarow.getDistance( "ａｌ",              "ａｌ"             )).to be_within(0.0001).of(1.0)
+    expect( @jarow.getDistance( "ｍａｒｔｈａ",      "ｍａｒｈｔａ"     )).to be_within(0.0001).of(0.9611)
+    expect( @jarow.getDistance( "ｊｏｎｅｓ",        "ｊｏｈｎｓｏｎ"   )).to be_within(0.0001).of(0.8323)
+    expect( @jarow.getDistance( "ａｂｃｖｗｘｙｚ",  "ｃａｂｖｗｘｙｚ" )).to be_within(0.0001).of(0.9583)
+    expect( @jarow.getDistance( "ｄｗａｙｎｅ",      "ｄｕａｎｅ"       )).to be_within(0.0001).of(0.8400)
+    expect( @jarow.getDistance( "ｄｉｘｏｎ",        "ｄｉｃｋｓｏｎｘ" )).to be_within(0.0001).of(0.8133)
+    expect( @jarow.getDistance( "ｆｖｉｅ",          "ｔｅｎ"           )).to be_within(0.0001).of(0.0)
+    expect( @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｚａｃ　ｅｆｒｏｎ")).to be > ( @jarow.getDistance("ｚａｃ　ｅｐｈｒｏｎ", "ｋａｉ　ｅｐｈｒｏｎ" ))
+    expect( @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｎｅｙ　ｓｐｅａｒｓ")).to be > ( @jarow.getDistance("ｂｒｉｔｔｎｅｙ　ｓｐｅａｒｓ", "ｂｒｉｔｔｎｅｙ　ｓｔａｒｔｚｍａｎ" ))
+    expect( @jarow.getDistance( "スパゲティー",              "スパゲッティー"             )).to be_within(0.0001).of(0.9666)
+    expect( @jarow.getDistance( "スパゲティー",              "スパゲティ"                 )).to be_within(0.0001).of(0.9722)
+    expect( @jarow.getDistance( "スティービー・ワンダー",    "スピーディー・ワンダー"     )).to be_within(0.0001).of(0.8561)
+    expect( @jarow.getDistance( "マイケル・ジャクソン",      "ジャイケル・マクソン"       )).to be_within(0.0001).of(0.8000)
+    expect( @jarow.getDistance( "まつもとゆきひろ",          "まつもとひろゆき"           )).to be_within(0.0001).of(0.9500)
+    expect( @jarow.getDistance( "クライエント",              "クライアント"               )).to be_within(0.0001).of(0.9222)
+    expect( @jarow.getDistance( "サーバー",                  "サーバ"                     )).to be_within(0.0001).of(0.9416)
+    expect( @jarow.pure?( )).to be true
   end
 end
