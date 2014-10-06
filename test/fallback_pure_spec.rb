@@ -24,9 +24,10 @@
 
 
 require 'inline'
+require 'fuzzystringmatch'
 
 describe Inline, "when c compile failed, fall back into pure " do
   it "is for JRuby", :if => RUBY_PLATFORM == 'java' do
-    FuzzyStringMatch::JaroWinkler.create( :native ).pure?( ).should be_true
+    expect( FuzzyStringMatch::JaroWinkler.create( :native ).pure?( )).to be true
   end
 end
