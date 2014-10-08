@@ -28,32 +28,23 @@ describe FuzzyStringMatch, "when some string distances (Pure) are" do
     @jarow = FuzzyStringMatch::JaroWinkler.create
   end
   it "should" do
-    @jarow.getDistance( "henka",     "henkan"    ).should be_within(0.0001).of(0.9722)
-    @jarow.getDistance( "al",        "al"        ).should == 1.0
-    @jarow.getDistance( "martha",    "marhta"    ).should be_within(0.0001).of(0.9611)
-    @jarow.getDistance( "jones",     "johnson"   ).should be_within(0.0001).of(0.8323)
-    @jarow.getDistance( "abcvwxyz",  "cabvwxyz"  ).should be_within(0.0001).of(0.9583)
-    @jarow.getDistance( "dwayne",    "duane"     ).should be_within(0.0001).of(0.8400)
-    @jarow.getDistance( "dixon",     "dicksonx"  ).should be_within(0.0001).of(0.8133)
-    @jarow.getDistance( "fvie",      "ten"       ).should == 0.0
-    lambda {
-      d1 = @jarow.getDistance("zac ephron", "zac efron")
-      d2 = @jarow.getDistance("zac ephron", "kai ephron")
-      d1 > d2
-    }.should be_true
-    lambda {
-      d1 = @jarow.getDistance("brittney spears", "britney spears")
-      d2 = @jarow.getDistance("brittney spears", "brittney startzman")
-      d1 > d2
-    }.should be_true
-
-    @jarow.pure?( ).should be_true
+    expect( @jarow.getDistance( "henka",     "henkan"    )).to be_within(0.0001).of(0.9722)
+    expect( @jarow.getDistance( "al",        "al"        )).to be_within(0.0001).of(1.0)
+    expect( @jarow.getDistance( "martha",    "marhta"    )).to be_within(0.0001).of(0.9611)
+    expect( @jarow.getDistance( "jones",     "johnson"   )).to be_within(0.0001).of(0.8323)
+    expect( @jarow.getDistance( "abcvwxyz",  "cabvwxyz"  )).to be_within(0.0001).of(0.9583)
+    expect( @jarow.getDistance( "dwayne",    "duane"     )).to be_within(0.0001).of(0.8400)
+    expect( @jarow.getDistance( "dixon",     "dicksonx"  )).to be_within(0.0001).of(0.8133)
+    expect( @jarow.getDistance( "fvie",      "ten"       )).to be_within(0.0001).of(0.0)
+    expect( @jarow.getDistance("zac ephron", "zac efron" )).to be > ( @jarow.getDistance("zac ephron", "kai ephron" ))
+    expect( @jarow.getDistance("brittney spears", "britney spears" )).to be > ( @jarow.getDistance("brittney spears", "brittney startzman" ))
+    expect( @jarow.pure?( )).to be true
   end
 end
 
 describe FuzzyStringMatch, "when older factory method was called, (Native) are" do
   it "should" do
-    lambda { FuzzyStringMatch::JaroWinkler.new.create( :pure ) }.should    raise_error(NoMethodError)
+    expect { FuzzyStringMatch::JaroWinkler.new.create( :pure ) }.to    raise_error(NoMethodError)
   end
 end
 
