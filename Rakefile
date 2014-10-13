@@ -1,7 +1,7 @@
 #-*- mode: ruby; -*-
 #
 # Release Engineering
-#   1. edit the VERSION.yml file
+#   1. edit the "s.version = " line of fuzzy-string-match.gemspec
 #   2. rake  &&  rake build
 #      to generate pkg/fuzzy-string-match-x.x.x.gem
 #   3. install fuzzy-string-match-x.x.x.gem to clean environment and test

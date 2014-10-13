@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
-    "VERSION.yml",
     "lib/fuzzystringmatch.rb",
     "lib/fuzzystringmatch/inline.rb",
     "lib/fuzzystringmatch/inline/jarowinkler.rb",
