@@ -27,7 +27,7 @@ module FuzzyStringMatch
 
     def getDistance(s1,s2)
       if (MAX_LENGTH_OF_STRING < s1.size) or (MAX_LENGTH_OF_STRING < s2.size)
-        raise ArgumentError.new( "length of the argument string must be less than 1024 character." )
+        raise ArgumentError.new( sprintf( "length of the argument string must be less than %d or equal to %d character.", MAX_LENGTH_OF_STRING, MAX_LENGTH_OF_STRING ))
       end
       return getDistanceInternal(s1,s2)
     end
