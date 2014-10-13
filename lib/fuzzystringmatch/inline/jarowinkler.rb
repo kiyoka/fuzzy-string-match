@@ -17,11 +17,21 @@
 #
 module FuzzyStringMatch
   require 'inline'
+  MAX_LENGTH_OF_STRING = 1024*10
+  
   class JaroWinklerInline
+
     def pure?
       false
     end
 
+    def getDistance(s1,s2)
+      if (MAX_LENGTH_OF_STRING < s1.size) or (MAX_LENGTH_OF_STRING < s2.size)
+        raise ArgumentError.new( "length of the argument string must be less than 1024 character." )
+      end
+      return getDistanceInternal(s1,s2)
+    end
+    
     inline do |builder|
       builder.include '<iostream>'
       builder.add_compile_flags %q(-x c++)
@@ -32,7 +42,7 @@ module FuzzyStringMatch
       builder.c '
 
 
-double getDistance( char *s1, char *s2 )
+double getDistanceInternal( char *s1, char *s2 )
 {
   char *_max;
   char *_min;

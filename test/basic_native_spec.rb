@@ -47,3 +47,15 @@ describe FuzzyStringMatch, "when older factory method was called, (Native) are" 
     expect { FuzzyStringMatch::JaroWinkler.new.create( :native ) }.to   raise_error(NoMethodError)
   end
 end
+
+describe FuzzyStringMatch, "when large string passed, (Native) are" do
+  before do
+    @jarow = FuzzyStringMatch::JaroWinkler.create( :native )
+  end
+  it "should" do
+    expect( @jarow.getDistance( "0123456789", "0123456789" )).to be_within(0.0001).of(1.0)
+    expect( @jarow.getDistance( "0123456789" * 1024, "0123456789" * 1024 )).to be_within(0.0001).of(1.0)
+    expect{ @jarow.getDistance( "0123456789" * 1025, "0123456789" * 1024 )}.to raise_error(ArgumentError)
+    expect{ @jarow.getDistance( "0123456789" * 1024, "0123456789" * 1025 )}.to raise_error(ArgumentError)
+  end
+end
