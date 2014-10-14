@@ -22,8 +22,17 @@ module FuzzyStringMatch
       false
     end
 
+    def getDistance(s1,s2)
+      result = getDistanceInternal(s1,s2)
+      if result.nan?
+        raise NoMemoryError.new( "failed to allocate memory. string argument s1 or s2 is too large." )
+      end
+      return result
+    end
+
     inline do |builder|
       builder.include '<iostream>'
+      builder.include '<math.h>'
       builder.add_compile_flags %q(-x c++)
       builder.add_link_flags %q(-lstdc++)
       builder.c_raw 'int max( int a, int b ) { return ((a)>(b)?(a):(b)); }'
@@ -32,7 +41,7 @@ module FuzzyStringMatch
       builder.c '
 
 
-double getDistance( char *s1, char *s2 )
+double getDistanceInternal( char *s1, char *s2 )
 {
   char *_max;
   char *_min;
@@ -48,12 +57,22 @@ double getDistance( char *s1, char *s2 )
   }
   int range = max( _max_length / 2 - 1, 0 );
 
-  int indexes[_min_length];
+  int *indexes = NULL;
+  indexes = (int *)malloc(_min_length * sizeof(int));
+  if( NULL == indexes ) {
+    return nanl("");
+  }
+
+  int *flags = NULL;
+  flags = (int *)malloc(_max_length * sizeof(int));
+  if( NULL == flags ) {
+    free(indexes);
+    return nanl("");
+  }
+
   for( int i = 0 ; i < _min_length ; i++ ) {
     indexes[i] = -1;
   }
-
-  int flags[_max_length];
   for( int i = 0 ; i < _max_length ; i++ ) {
     flags[i] = 0;
   }
@@ -70,8 +89,22 @@ double getDistance( char *s1, char *s2 )
     }
   }
 
-  char ms1[matches];
-  char ms2[matches];
+  char *ms1 = NULL;
+  ms1 = (char *)malloc(matches * sizeof(char));
+  if( NULL == ms1 ) {
+    free(indexes);
+    free(flags);
+    return nanl("");
+  }
+  char *ms2 = NULL;
+  ms2 = (char *)malloc(matches * sizeof(char));
+  if( NULL == ms2 ) {
+    free(indexes);
+    free(flags);
+    free(ms1);
+    return nanl("");
+  } 
+
   int ms1_length = matches;
 
   for (int i = 0, si = 0; i < _min_length; i++) {
@@ -103,12 +136,21 @@ double getDistance( char *s1, char *s2 )
 
   double m = (double) matches;
   if (matches == 0) {
+    free(indexes);
+    free(flags);
+    free(ms1);
+    free(ms2);
     return 0.0;
   }
   int t = transpositions / 2;
   double j = ((m / strlen(s1) + m / strlen(s2) + (m - t) / m)) / 3;
   double jw = j < 0.7 ? j : j + double_min(0.1, 1.0 / _max_length) * prefix
     * (1 - j);
+
+  free(indexes);
+  free(flags);
+  free(ms1);
+  free(ms2);
   return jw;
 }'
     end
