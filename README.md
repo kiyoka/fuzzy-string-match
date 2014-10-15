@@ -96,6 +96,12 @@
 
 ## ChangeLog
 
+### 0.9.7 / Oct  15, 2014
+
+* Use rspec 3.1 syntax.
+* Fixed: issue #12 `Using stack allocated memory`.
+* Fixed: remove duplicated dependency of gem package.
+
 ### 0.9.6 / Dec  21, 2013
 
 * New feature: fuzzy-string-match falls back into pure ruby mode when c-compile fails.
