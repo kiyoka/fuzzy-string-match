@@ -48,8 +48,8 @@ double getDistanceInternal( char *s1, char *s2 )
   int _max_length = 0;
   int _min_length = 0;
 
-  int _s1_length = strlen(s1);
-  int _s2_length = strlen(s2);
+  int _s1_length = (int)strlen(s1);
+  int _s2_length = (int)strlen(s2);
 
   if ( _s1_length > _s2_length ) {
     _max = s1; _max_length = _s1_length;
