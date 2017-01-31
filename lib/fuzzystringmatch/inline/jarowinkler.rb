@@ -47,13 +47,17 @@ double getDistanceInternal( char *s1, char *s2 )
   char *_min;
   int _max_length = 0;
   int _min_length = 0;
-  if ( strlen(s1) > strlen(s2) ) {
-    _max = s1; _max_length = (int)strlen(s1);
-    _min = s2; _min_length = (int)strlen(s2);
+
+  int _s1_length = (int)strlen(s1);
+  int _s2_length = (int)strlen(s2);
+
+  if ( _s1_length > _s2_length ) {
+    _max = s1; _max_length = _s1_length;
+    _min = s2; _min_length = _s2_length;
   }
   else {
-    _max = s2; _max_length = (int)strlen(s2);
-    _min = s1; _min_length = (int)strlen(s1);
+    _max = s2; _max_length = _s2_length;
+    _min = s1; _min_length = _s1_length;
   }
   int range = max( _max_length / 2 - 1, 0 );
 
@@ -143,7 +147,7 @@ double getDistanceInternal( char *s1, char *s2 )
     return 0.0;
   }
   int t = transpositions / 2;
-  double j = ((m / strlen(s1) + m / strlen(s2) + (m - t) / m)) / 3;
+  double j = ((m / _s1_length + m / _s2_length + (m - t) / m)) / 3;
   double jw = j < 0.7 ? j : j + double_min(0.1, 1.0 / _max_length) * prefix
     * (1 - j);
 
