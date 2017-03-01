@@ -96,6 +96,12 @@
 
 ## ChangeLog
 
+### 0.9.8 / Mar   2, 2017
+
+* Changed README.md (Supported ruby version is 2.1.0 or higher)
+* Merge pull request #16 from ferdinandrosario/ferdinandrosario-patch-1 (Travis rubies updated)
+* Merge pull request #14 from timsatterfield/master (Reduce calls to strlen() in native jaro winkler)
+
 ### 0.9.7 / Oct  15, 2014
 
 * Use rspec 3.1 syntax.
