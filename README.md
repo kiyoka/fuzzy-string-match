@@ -76,7 +76,7 @@
 
 ### for CRuby
  - RubyInline
- - Ruby 1.9.2 or higher ( includes RubyInstaller.org's CRuby on Windows )
+ - Ruby 2.1.0 or higher ( includes RubyInstaller.org's CRuby on Windows )
 
 ### for JRuby
  - JRuby 1.6.6 or higher
