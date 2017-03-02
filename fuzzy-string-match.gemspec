@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "fuzzy-string-match"
-  s.version = "0.9.7"
+  s.version = "0.9.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kiyoka/fuzzy-string-match"
   s.licenses = ["Apache-2.0"]
   s.require_paths = ["lib"]
-  s.required_ruby_version = Gem::Requirement.new(">= 1.9.1")
+  s.required_ruby_version = Gem::Requirement.new(">= 2.1.0")
   s.rubygems_version = "2.0.14"
   s.summary = "fuzzy string matching library"
 
