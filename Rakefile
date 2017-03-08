@@ -6,7 +6,6 @@
 #      to generate pkg/fuzzy-string-match-x.x.x.gem
 #   3. install fuzzy-string-match-x.x.x.gem to clean environment and test
 #   4. rake release
-#   5. gem push pkg/fuzzy-string-match-x.x.x.gem   ( need gem version 1.3.6 or higer. Please "gem update --system" to update )
 #
 # for Development
 #   rake test_dev

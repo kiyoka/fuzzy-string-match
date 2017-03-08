@@ -96,7 +96,7 @@
 
 ## ChangeLog
 
-### 0.9.8 / Mar   2, 2017
+### 0.9.8 / Mar   9, 2017
 
 * Changed README.md (Supported ruby version is 2.1.0 or higher)
 * Merge pull request #16 from ferdinandrosario/ferdinandrosario-patch-1 (Travis rubies updated)
