@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fuzzy-string-match"
-  s.version = "0.9.9"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2013-12-21"
+  s.date = "2017-03-10"
   s.description = "calculate Jaro Winkler distance."
   s.email = "kiyoka@sumibi.org"
   s.extra_rdoc_files = [
