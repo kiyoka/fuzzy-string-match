@@ -76,7 +76,7 @@
 
 ### for CRuby
  - RubyInline
- - Ruby 2.1.0 or higher ( includes RubyInstaller.org's CRuby on Windows )
+ - Ruby 2.0.0 or higher ( includes RubyInstaller.org's CRuby on Windows )
 
 ### for JRuby
  - JRuby 1.6.6 or higher
@@ -96,9 +96,14 @@
 
 ## ChangeLog
 
-### 0.9.8 / Mar   9, 2017
+### 1.0.0 / Mar  10, 2017
+* First stable release
 
-* Changed README.md (Supported ruby version is 2.1.0 or higher)
+### 0.9.9 / Mar   9, 2017
+* Supported ruby version is 2.0.0 or higher(for RHEL 7.x)
+
+### 0.9.8 / Mar   9, 2017
+* Supported ruby version is 2.1.0 or higher
 * Merge pull request #16 from ferdinandrosario/ferdinandrosario-patch-1 (Travis rubies updated)
 * Merge pull request #14 from timsatterfield/master (Reduce calls to strlen() in native jaro winkler)
 
