@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fuzzy-string-match"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2017-03-10"
+  s.date = "2017-03-27"
   s.description = "calculate Jaro Winkler distance."
   s.email = "kiyoka@sumibi.org"
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kiyoka/fuzzy-string-match"
   s.licenses = ["Apache-2.0"]
   s.require_paths = ["lib"]
-  s.required_ruby_version = Gem::Requirement.new(">= 2.0.0")
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
   s.rubygems_version = "2.0.14"
   s.summary = "fuzzy string matching library"
 
