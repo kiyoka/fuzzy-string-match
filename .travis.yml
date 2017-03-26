@@ -15,6 +15,7 @@ gemfile:
 
 matrix:
   allow_failures:
+    - rvm: jruby-1.7.26
     - rvm: jruby-9.1.6.0
     - rvm: ruby-head
 
