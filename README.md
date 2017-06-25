@@ -96,6 +96,9 @@
 
 ## ChangeLog
 
+### 1.0.1 / Jun  25, 2017
+* support JRuby 1.7.26(CRuby 1.9 compatible)
+
 ### 1.0.0 / Mar  10, 2017
 * First stable release
 
