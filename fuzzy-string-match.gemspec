@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kiyoka Nishiyama"]
-  s.date = "2017-03-27"
   s.description = "calculate Jaro Winkler distance."
   s.email = "kiyoka@sumibi.org"
   s.extra_rdoc_files = [
